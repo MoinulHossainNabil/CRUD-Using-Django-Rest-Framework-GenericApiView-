@@ -1,0 +1,1 @@
+CRUD operations using django rest framework with GenericApiView
