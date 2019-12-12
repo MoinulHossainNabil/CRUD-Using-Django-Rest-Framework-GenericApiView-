@@ -31,26 +31,26 @@ class ArticleView(ListModelMixin, CreateModelMixin, GenericAPIView):
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
-# for getting a single element by id
 
+# for getting a single element by id
 class SingleArticleView(RetrieveAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
-# for updating a single element by id 
 
+# for updating a single element by id 
 class UpdateSingleArticle(RetrieveUpdateAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
-# get , delete, update a single element by id
 
+# get , delete, update a single element by id
 class GetUpdateDelete(RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     
-# for posting a single element
 
+# for posting a single element
 class PostView(mixins.CreateModelMixin, GenericAPIView, mixins.ListModelMixin):
 
     serializer_class = ArticleSerializer
