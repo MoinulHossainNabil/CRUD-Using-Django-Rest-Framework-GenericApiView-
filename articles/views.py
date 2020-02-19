@@ -4,6 +4,8 @@ from .models import Article, Author
 
 from rest_framework import mixins
 
+from rest_framework import generics
+
 from django.shortcuts import get_object_or_404, render
 
 from rest_framework.mixins import ListModelMixin, CreateModelMixin
@@ -58,3 +60,12 @@ class PostView(mixins.CreateModelMixin, GenericAPIView, mixins.ListModelMixin):
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+
+# get articles filtered by specific user
+class UsersPost(generics.ListAPIView):
+    serializer_class = ArticleSerializer
+
+    def get_queryset(self):
+        username = self.kwargs['username']
+        data = Article.objects.filter(author__name=username)
+        return data

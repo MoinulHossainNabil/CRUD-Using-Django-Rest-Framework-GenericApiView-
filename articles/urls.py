@@ -5,7 +5,8 @@ from .views import (
     SingleArticleView,
     UpdateSingleArticle,
     GetUpdateDelete,
-    PostView
+    PostView,
+    UsersPost
 )
 
 
@@ -18,4 +19,5 @@ urlpatterns = [
     path('article/update/<int:pk>', UpdateSingleArticle.as_view()),
     path('article/delete/<int:pk>', GetUpdateDelete.as_view()),
     path('article/post/', PostView.as_view()),
+    path('userpost/<str:username>', UsersPost.as_view()),
 ]
